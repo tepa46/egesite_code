@@ -4,41 +4,45 @@
 <center>
     <h1>Решение задач</h1>
 
-{% for message in data['message'] %}
+    {% for message in data['message'] %}
     <p>{{message}}</p>
-{% endfor %}
-{% for photo in data['photo'] %}
+    {% endfor %}
+    {% for photo in data['photo'] %}
     <p><img src={{photo}}></p>
-{% endfor %}
+    {% endfor %}
 
-<form method="POST">
-      <input type="hidden" name="csrfmiddlewaretoken" value="R3dTpDaSNhRO41BNLmpb8UHelbl8z3qfejXii1SqzxQtSKuhQqSdOrnyK98awtS0">
-          <div class="input-group mb-3">
+    <form method="POST">
+        <input type="hidden" name="csrfmiddlewaretoken"
+               value="R3dTpDaSNhRO41BNLmpb8UHelbl8z3qfejXii1SqzxQtSKuhQqSdOrnyK98awtS0">
+        <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Answer: </span>
+                <span class="input-group-text">Answer: </span>
             </div>
 
-            <input type="text" class="form-control" placeholder="Напишите ответ" aria-label="Answer" name="answer" id="answer">
+            <input type="text" class="form-control" placeholder="Напишите ответ" aria-label="Answer" name="answer"
+                   id="answer">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="submit">Check</button>
+                <button class="btn btn-outline-secondary" type="submit">Check</button>
             </div>
-          </div>
-</form>
+        </div>
+    </form>
 
-{% if wrong == True %}
+    {% if wrong == True %}
     <div class="container p-3 my-3 bg-danger text-white">
-     Извините, ваш ответ неправильный
-  </div>
-{% endif %}
+        Извините, ваш ответ неправильный
+    </div>
+    {% endif %}
 
-{% if success == True %}
-        <div class="container p-3 my-3 bg-success text-white">
+    {% if success == True %}
+    <div class="container p-3 my-3 bg-success text-white">
         Правильный ответ
-  </div>
-{% endif %}
+    </div>
+    {% endif %}
 
-<br><br>
-<a href=/view_answer/{{problem_id}}><button class="btn-primary">Посмотреть решение</button></a>
+    <br><br>
+    <a href=/view_answer/{{problem_id}}>
+        <button class="btn-primary">Посмотреть решение</button>
+    </a>
 
 </center>
 {% endblock %}
