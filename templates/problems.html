@@ -4,28 +4,32 @@
 
 <h1 align="center">Решение задач</h1>
 <br><br>
-<a href=/problem/{{choice_problem.choice_rand_question()}}><center><button class="btn-primary">Подобрать задачу</button></center></a>
-
+<center>
+    <a href=/problem/{{choice_problem.choice_rand_question()}}>
+        <button class="btn-primary">Подобрать задачу</button>
+    </a>
+</center>
 <br>
 
 <table class="table table-bordered rounded-lg sortable-alpha">
-     <thead class="thead-light ">
+    <thead class="thead-light ">
     <tr>
-      <th>Номер задачи</th>
-      <th>Вид задачи</th>
+        <th>Номер задачи</th>
+        <th>Вид задачи</th>
     </tr>
-  </thead>
+    </thead>
     <tbody>
-        {% for key in ege_data %}
-        {% if type == 'all' or type == ege_data[key]['subject_name']%}
-          <tr>
-            <td> <a class="btn btn-outline-primary" href="/problem/{{key}}">{{key}}</a></td>
-            <td>
-              <a href="/problems/{{ege_data[key]['subject_name']}}">{{ege_data[key]['subject_name']}}</a>
-            </td>
-            </tr>
-        {% endif %}
-        {% endfor %}
+    {% for key in ege_data %}
+    {% if type == 'all' or type == ege_data[key]['subject_name']%}
+    <tr>
+        <td><a class="btn btn-outline-primary" href="/problem/{{key}}">{{key}}</a></td>
+        <td>
+            <a href="/problems/{{ege_data[key]['subject_name']}}">{{ege_data[key]['subject_name']}}</a>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
     </tbody>
-<tfoot></tfoot></table>
+    <tfoot></tfoot>
+</table>
 {% endblock %}
