@@ -3,9 +3,23 @@ from flask import render_template
 from flask import redirect
 from flask import request
 
+import os
 import json
 
 import ChoiceProblem
+
+import logging
+from logging import handlers
+
+logging_handler = logging.handlers.RotatingFileHandler(
+    filename='logs/system.log',
+    encoding='utf8',
+    mode='a'
+)
+
+logging.basicConfig(format='%(filename)s[LINE:%(lineno)d]# %(levelname)-8s [%(asctime)s]  %(message)s',
+                    level=logging.INFO,
+                    handlers=[logging_handler])
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -67,18 +81,16 @@ def view_answer(problem_id):
 if __name__ == '__main__':
     with open("load.json", 'r', encoding="utf-8-sig") as f:
         ege_data = json.loads(f.read())
-        # logging.info('Have read load.json')
-        print('Have read load.json')
+        logging.info('Have read load.json')
 
     with open('predmet_ids.json', 'r', encoding="utf-8-sig") as f:
         predmet_ids = json.loads(f.read())
-        # logging.info('Have read predmet_ids.json')
-        print('Have read predmet_ids.json')
+        logging.info('Have read predmet_ids.json')
 
     with open('similar_tasks.json', 'r', encoding="utf-8-sig") as f:
         similar_tasks = json.loads(f.read())
-        # logging.info('Have read similar_tasks.json')
-        print('Have read similar_tasks.json')
+        logging.info('Have read similar_tasks.json')
 
     choice_problem = ChoiceProblem.ChoiceProblem(ege_data, similar_tasks)
-    app.run(port=8080, host='127.0.0.1')
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='127.0.0.1', port=port)
