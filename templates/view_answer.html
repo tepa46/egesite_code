@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<center>
+    <h1>Решение задачи</h1>
+
+    {% if solution_type == 'list' %}
+        {% for line in solution %}
+            <p>{{line}}</p>
+        {% endfor %}
+    {% else %}
+    <p>{{solution}}</p>
+    {% endif %}
+
+    {% if answer_type == 'list' %}
+        <h3>Ответ:</h3>
+        {% for line in answer %}
+            <p>{{line}}</p>
+        {% endfor %}
+    {% else %}
+               <p><h3>Ответ:</h3>{{answer}}</p>
+    {% endif %}
+
+    <a href=/problem/{{choice_problem.choice_rand_question()}}><center><button class="btn-primary">Подобрать задачу</button></center></a>
+    <br><br>
+    {% set similar_question = choice_problem.choice_similar_question(problem_id) %}
+    {% if similar_question != 'Не удалось подобрать задачу' %}
+        <a href=/problem/{{similar_question}}><center><button class="btn-primary">Подобрать похожую задачу</button></center></a>
+    {% else %}
+        <p>Не удалось подобрать похожую задачу :(</p>
+    {% endif %}
+</center>
+
+
+{% endblock %}

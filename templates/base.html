@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <title>{{title}}</title>
+</head>
+<body>
+<body bgcolor="#000" background="/static/img/background.png">
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="btn btn-outline-primary"> EgeForces<sub>βeta</sub></a></h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="/blog">Новости</a>
+        <a class="p-2 text-dark" href="/problems/all">Все задачи</a>
+        <a class="p-2 text-dark" href="/problems/математика">Математика</a>
+        <a class="p-2 text-dark" href="/problems/русский язык">Русский язык</a>
+        <a class="p-2 text-dark" href="/problems/информатика">Информатика</a>
+        <a class="p-2 text-dark" href="/problems/физика">Физика</a>
+    </nav>
+</div>
+
+{% block content %}{% endblock %}
+
+<footer>
+    <section class="container-fluid sec-sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <center>
+                        <br class="clearfix"><br class="clearfix">
+                        EgeForces 2021 © <br class="clearfix">
+                        With ♥ from EgeForces
+                    </center>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</footer>
+</body>
+</html>
